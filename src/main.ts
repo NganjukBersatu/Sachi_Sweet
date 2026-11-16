@@ -1,0 +1,13 @@
+import '@fontsource-variable/dm-sans'
+import '@fontsource-variable/fraunces'
+import './assets/main.css'
+
+import { createApp } from 'vue'
+import App from './App.vue'
+import router from './router'
+
+const app = createApp(App)
+
+app.use(router)
+
+app.mount('#app')

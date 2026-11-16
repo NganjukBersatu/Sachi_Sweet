@@ -1,0 +1,6 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "DM Sans Variable", sans-serif;
+  --font-display: "Fraunces Variable", serif;
+}
