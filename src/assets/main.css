@@ -1,6 +1,80 @@
 @import "tailwindcss";
 
 @theme {
-  --font-sans: "DM Sans Variable", sans-serif;
-  --font-display: "Fraunces Variable", serif;
+  --font-sans: "DM Sans Variable", system-ui, sans-serif;
+  --font-display: "Fraunces Variable", Georgia, serif;
+
+  --color-sachi-pink: #ffced8;
+  --color-sachi-pink-soft: #ffdddd;
+  --color-sachi-cream: #fff4de;
+  --color-sachi-cream-deep: #ffe8c4;
+  --color-sachi-blush: #fff5f5;
+  --color-sachi-peach: #f7d6d0;
+  --color-sachi-rose: #e2b4bd;
+  --color-sachi-ink: #4a4a4a;
+
+  /* Batas HP/desktop sama dengan desain lama (760px) */
+  --breakpoint-md: 761px;
+
+  --animate-fade-up: fade-up 0.8s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+  --animate-photo-in: photo-in 1s 0.2s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+  --animate-float: float 7s ease-in-out infinite;
+  --animate-float-fast: float 5s ease-in-out infinite;
+  --animate-float-slow: float 9s ease-in-out infinite;
+  --animate-drift: drift 14s ease-in-out infinite alternate;
+  --animate-spin-slow: spin 40s linear infinite;
+  --animate-underline: underline 0.8s 1s ease forwards;
+  --animate-marquee: marquee 30s linear infinite;
+  --animate-slide-left: slide-from-left 0.6s cubic-bezier(0.2, 0.7, 0.2, 1) backwards;
+  --animate-slide-right: slide-from-right 0.6s cubic-bezier(0.2, 0.7, 0.2, 1) backwards;
+
+  @keyframes fade-up {
+    from { opacity: 0; transform: translateY(26px); }
+    to { opacity: 1; transform: none; }
+  }
+  @keyframes photo-in {
+    from { opacity: 0; transform: translateX(48px) scale(0.95); }
+    to { opacity: 1; transform: none; }
+  }
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+  }
+  @keyframes drift {
+    to { transform: translate(50px, 36px) scale(1.12); }
+  }
+  @keyframes underline {
+    to { transform: scaleX(1); }
+  }
+  @keyframes marquee {
+    to { transform: translateX(-50%); }
+  }
+  @keyframes slide-from-left {
+    from { opacity: 0; transform: translateX(-48px); }
+  }
+  @keyframes slide-from-right {
+    from { opacity: 0; transform: translateX(48px); }
+  }
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 80px;
+  }
+  body {
+    @apply bg-sachi-blush font-sans leading-[1.6] text-sachi-ink;
+  }
+  :focus-visible {
+    outline: 3px solid var(--color-sachi-ink);
+    outline-offset: 3px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation: none !important;
+    transition: none !important;
+  }
 }
