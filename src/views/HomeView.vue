@@ -1,9 +1,15 @@
 <script setup lang="ts">
-import TheWelcome from '../components/TheWelcome.vue'
+import HeroSection from '@/components/HeroSection.vue'
+import MarqueeBand from '@/components/MarqueeBand.vue'
+import AboutSection from '@/components/AboutSection.vue'
+import MenuSection from '@/components/MenuSection.vue'
+import ContactSection from '@/components/ContactSection.vue'
 </script>
 
 <template>
-  <main>
-    <TheWelcome />
-  </main>
+  <HeroSection />
+  <MarqueeBand />
+  <AboutSection />
+  <MenuSection />
+  <ContactSection />
 </template>
