@@ -1,22 +1,29 @@
 <script setup lang="ts">
 import { Heart, Plus } from '@lucide/vue'
-import { popular, recommended, services } from '@/data/site'
+import CatalogCard from '@/components/CatalogCard.vue'
+import { catalog, homeCategories, popular, recommended } from '@/data/site'
+
+const restCount = catalog.length - homeCategories.length
 </script>
 
 <template>
-  <section id="layanan" class="pb-[72px] pt-6 max-sm:pb-14">
+  <section id="katalog" class="pb-[72px] pt-6 max-sm:pb-14">
     <div class="wrap">
       <div class="mb-10 max-w-[620px]">
-        <h2 class="sec-title">Layanan Sachi Sweet</h2>
-        <p class="mt-3 text-[17px] text-ink-soft">Pilih cara menikmati sajian kami yang paling cocok untuk Anda.</p>
+        <h2 class="sec-title">Katalog Sachi Sweet</h2>
+        <p class="mt-3 text-[17px] text-ink-soft">Pilih kategori favoritmu, dari roti dan kue sampai hampers untuk acara.</p>
       </div>
 
-      <div class="mb-14 grid gap-5 desk:grid-cols-3">
-        <article v-for="s in services" :key="s.title" class="rounded-panel border border-cream-2 bg-paper p-[26px]">
-          <div class="icon-badge mb-3.5 h-12 w-12"><component :is="s.icon" class="h-6 w-6" aria-hidden="true" /></div>
-          <h3 class="mb-1.5 text-xl">{{ s.title }}</h3>
-          <p class="text-[15px] text-ink-soft">{{ s.text }}</p>
-        </article>
+      <div class="mb-14 grid gap-5 sm:grid-cols-2 desk:grid-cols-3">
+        <CatalogCard v-for="c in homeCategories" :key="c.slug" :category="c" />
+        <RouterLink
+          :to="{ name: 'catalog' }"
+          class="flex flex-col items-center justify-center rounded-[26px] bg-peach-400 p-8 text-center shadow-soft sm:col-span-2 desk:col-span-1"
+        >
+          <h3 class="mb-2.5 text-[clamp(24px,3vw,30px)]">Masih ada {{ restCount }} kategori lainnya</h3>
+          <p class="mb-5 max-w-[28ch]">Lihat seluruh katalog Sachi Sweet beserta harganya.</p>
+          <span class="btn btn-soft">Lihat katalog lengkap</span>
+        </RouterLink>
       </div>
 
       <div class="grid items-center gap-8 rounded-panel bg-peach-400 px-6 py-[30px] shadow-soft sm:p-[36px_40px] desk:grid-cols-[.8fr_2.2fr]">
