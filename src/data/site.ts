@@ -1,4 +1,4 @@
-import { Cake, Coffee, Gift, Heart, Home, Truck } from '@lucide/vue'
+import { Cake, Coffee, Gift, Heart, Home, Truck, Wallet, Wind } from '@lucide/vue'
 import type { Feature, Job, MenuItem, NavLink, Platform, PlatformLink, Review } from '@/types'
 import logo from '@/assets/logo.jpeg'
 import hero from '@/assets/mockup.jpeg'
@@ -9,12 +9,13 @@ import cheesecake from '@/assets/cheseecake.jpg'
 import milkbun from '@/assets/milkbun.jpg'
 import chocoberry from '@/assets/chocoberry.jpg'
 import minicakeRek from '@/assets/minicake.jpg'
+import locationPhoto from '@/assets/mockup.jpeg'
 
 /* ===== PENGATURAN: ubah bagian ini saja ===== */
 export const CONFIG: Record<'whatsapp' | 'phoneLabel' | 'address' | Platform, string> = {
-  whatsapp: '6281234567890', // format 62, tanpa + atau 0 di depan
-  phoneLabel: '0812 3456 7890',
-  address: 'Isi alamat lengkap Sachi Sweet di sini',
+  whatsapp: '6285280616218', // format 62, tanpa + atau 0 di depan
+  phoneLabel: '0852-8061-6218',
+  address: 'Sambiroto, Kec. Tembalang, Kota Semarang, Jawa Tengah 50276',
   gofood: '#', // tempel link toko dari aplikasi; "#" = buka halaman utama layanan
   grabfood: '#',
   shopeefood: '#',
@@ -40,6 +41,8 @@ export const navLinks: NavLink[] = [
   { id: 'tentang', label: 'Tentang kami' },
   { id: 'layanan', label: 'Layanan' },
   { id: 'portofolio', label: 'Portofolio' },
+  { id: 'lokasi', label: 'Lokasi' },
+  { id: 'karier', label: 'Karier' },
   { id: 'kontak', label: 'Kontak' },
 ]
 
@@ -85,12 +88,14 @@ const reviewAlts = [
   'Ulasan Google Maps dari Atika Tsurayya, 5 bintang: makanan tidak ada yang gagal, churros favorit',
   'Ulasan Google Maps dari Laila Siti Chotimah, 5 bintang: konsep kafe rumahan, dessert bervariasi dan fresh',
   'Ulasan Google Maps dari Adima Putri Widanti, 5 bintang: kafe cute dan nyaman, milkbun jadi menu favorit',
+  'Ulasan Google Maps dari Laila Siti Chotimah, 5 bintang: konsep kafe rumahan, dessert bervariasi dan fresh',
+  'Ulasan Google Maps dari Adima Putri Widanti, 5 bintang: kafe cute dan nyaman, milkbun jadi menu favorit',
 ]
-const reviewFiles = import.meta.glob<string>('@/assets/images/review-*.png', { eager: true, import: 'default' })
+const reviewFiles = import.meta.glob<string>('@/assets/review/*.jpeg', { eager: true, import: 'default' })
 export const reviews: Review[] = Object.entries(reviewFiles)
-  .sort(([a], [b]) => a.localeCompare(b))
+  .sort(([a], [b]) => a.localeCompare(b, undefined, { numeric: true }))
   .map(([, image], i) => ({ image, alt: reviewAlts[i] ?? 'Ulasan pelanggan Google Maps' }))
-
+  
 export const jobs: Job[] = [
   { title: 'Barista', text: 'Menyiapkan minuman dan melayani pelanggan.', tags: ['Penuh waktu', 'Di kafe'] },
   { title: 'Pembuat kue dan roti', text: 'Membuat dessert dan roti sesuai jadwal produksi.', tags: ['Penuh waktu', 'Dapur'] },
@@ -98,3 +103,34 @@ export const jobs: Job[] = [
 ]
 
 export const topics = ['Pesan kue ulang tahun', 'Pesan untuk acara', 'Tanya lowongan kerja', 'Pertanyaan lain']
+
+export const LOCATION = {
+  lat: -7.0301149,
+  lng: 110.4639919,
+  mapsUrl: 'https://maps.app.goo.gl/MQEZCnqDZWaii3Qc9',
+  photo: locationPhoto,
+  photoAlt: 'Tampak depan Sachi Sweet',
+}
+
+export type OpenHours = { open: string; close: string } | null
+
+const BUKA = '10.00' // GANTI: jam buka asli (di Maps hanya terlihat jam tutup)
+const TUTUP = '19.30' // dari Google Maps
+
+/* Urutan: 0 = Minggu, 1 = Senin, ... 6 = Sabtu. Isi null kalau libur. */
+export const hours: OpenHours[] = [
+  { open: BUKA, close: TUTUP }, // Minggu
+  { open: BUKA, close: TUTUP }, // Senin
+  { open: BUKA, close: TUTUP }, // Selasa
+  { open: BUKA, close: TUTUP }, // Rabu
+  { open: BUKA, close: TUTUP }, // Kamis
+  { open: BUKA, close: TUTUP }, // Jumat
+  { open: BUKA, close: TUTUP }, // Sabtu
+]
+
+export const locationFacts = [
+  { label: 'Teras santai', text: 'Duduk santai di teras', icon: Home },
+  { label: 'Ber-AC', text: 'Ruangan sejuk dan nyaman', icon: Wind },
+  { label: 'Pesan antar', text: 'GoFood, GrabFood, ShopeeFood', icon: Truck },
+  { label: 'Kisaran harga', text: 'Rp 25–50 rb per orang', icon: Wallet },
+]

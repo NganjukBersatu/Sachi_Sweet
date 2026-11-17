@@ -4,6 +4,7 @@ import HeroSection from '@/components/HeroSection.vue'
 import AboutSection from '@/components/AboutSection.vue'
 import ServicesSection from '@/components/ServicesSection.vue'
 import ReviewsSection from '@/components/ReviewsSection.vue'
+import LocationSection from '@/components/LocationSection.vue'
 import ContactSection from '@/components/ContactSection.vue'
 import AppFooter from '@/components/AppFooter.vue'
 import WaveDivider from '@/components/WaveDivider.vue'
@@ -21,6 +22,7 @@ const WAVE_B = 'M0 64V40C240 -10 520 70 760 34S1200 -6 1440 36V64Z'
     <WaveDivider :d="WAVE_B" fill="#FFD2B5" bg />
     <ReviewsSection />
     <WaveDivider :d="WAVE_B" fill="#FFD2B5" bg flip />
+    <LocationSection />
     <ContactSection />
   </main>
   <AppFooter />
