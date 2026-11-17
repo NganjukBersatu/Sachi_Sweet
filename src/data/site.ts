@@ -1,10 +1,14 @@
 import { Cake, Coffee, Gift, Heart, Home, Truck } from '@lucide/vue'
 import type { Feature, Job, MenuItem, NavLink, Platform, PlatformLink, Review } from '@/types'
 import logo from '@/assets/logo.jpeg'
-import hero from '@/assets/logo.jpeg'
-import cupcake from '@/assets/logo.jpeg'
-import box from '@/assets/logo.jpeg'
-import minicake from '@/assets/logo.jpeg'
+import hero from '@/assets/mockup.jpeg'
+import tentangkami from '@/assets/tentangkami.jpg'
+import wholecake from '@/assets/wholecake.jpeg'
+import tiramisu from '@/assets/tiramissu.jpg'
+import cheesecake from '@/assets/cheseecake.jpg'
+import milkbun from '@/assets/milkbun.jpg'
+import chocoberry from '@/assets/chocoberry.jpg'
+import minicakeRek from '@/assets/minicake.jpg'
 
 /* ===== PENGATURAN: ubah bagian ini saja ===== */
 export const CONFIG: Record<'whatsapp' | 'phoneLabel' | 'address' | Platform, string> = {
@@ -29,14 +33,13 @@ export const platforms: PlatformLink[] = (Object.keys(LABEL) as Platform[]).map(
   href: CONFIG[key] && CONFIG[key] !== '#' ? CONFIG[key] : DEFAULT_URL[key],
 }))
 
-export const images = { logo, hero, cupcake, box, minicake }
+export const images = { logo, hero, tentangkami }
 
 export const navLinks: NavLink[] = [
   { id: 'beranda', label: 'Beranda' },
   { id: 'tentang', label: 'Tentang kami' },
   { id: 'layanan', label: 'Layanan' },
   { id: 'portofolio', label: 'Portofolio' },
-  { id: 'karier', label: 'Karier' },
   { id: 'kontak', label: 'Kontak' },
 ]
 
@@ -60,15 +63,15 @@ export const services: Feature[] = [
 ]
 
 export const popular: MenuItem[] = [
-  { title: 'Charcuterie box', text: 'Keju, salami, buah, dan biskuit', image: box, alt: 'Box camilan berisi keju, salami, stroberi, dan anggur' },
-  { title: 'Mini cake', text: 'Berlapis krim, cocok dengan minuman dingin', image: minicake, alt: 'Mini cake berlapis dan minuman dingin' },
-  { title: 'Cupcake stroberi', text: 'Lembut dengan stroberi segar', image: cupcake, alt: 'Cupcake stroberi dengan krim ungu' },
+  { title: 'Whole Cake', text: 'Kue yang lembut, cocok untuk ulang tahun dan acara keluarga.', image: wholecake, alt: 'Whole cake dengan hiasan stroberi' },
+  { title: 'Poured Tiramisu', text: 'Tiramisu berlapis krim yang lembut, manisnya pas.', image: tiramisu, alt: 'Poured tiramisu berlapis krim dan kakao' },
+  { title: 'Strawberry Cheesecake', text: 'Cheesecake lembut dengan saus stroberi yang segar.', image: cheesecake, alt: 'Strawberry cheesecake dengan saus stroberi' },
 ]
 
 export const recommended: MenuItem[] = [
-  { title: 'Cupcake stroberi', text: 'Krim lembut dengan stroberi segar di atasnya.', image: cupcake, alt: 'Cupcake stroberi' },
-  { title: 'Mini cake dan donat', text: 'Manis, lembut, dan pas untuk berbagi.', image: minicake, alt: 'Mini cake dan donat cokelat' },
-  { title: 'Box camilan', text: 'Keju, buah, dan biskuit untuk teman ngobrol.', image: box, alt: 'Box camilan keju dan buah' },
+  { title: 'Milk Bun', text: 'Roti sobek lembut dengan krim dan taburan manis, nikmat dari suapan pertama.', image: milkbun, alt: 'Milk bun roti sobek dalam kemasan' },
+  { title: 'Choco Berry', text: 'Stroberi segar dengan cokelat lumer, manis dan bikin ketagihan.', image: chocoberry, alt: 'Choco Berry stroberi dengan cokelat lumer' },
+  { title: 'Mini Cake', text: 'Kue cantik berlapis krim lembut, cocok untuk hadiah atau camilan manis.', image: minicakeRek, alt: 'Mini cake berlapis krim' },
 ]
 
 const reviewAlts = [
