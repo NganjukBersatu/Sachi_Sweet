@@ -19,7 +19,6 @@ const WAVE_B = 'M0 64V40C240 -10 520 70 760 34S1200 -6 1440 36V64Z'
     <HeroSection />
     <AboutSection />
     <ServicesSection />
-    <WaveDivider :d="WAVE_B" fill="#FFD2B5" bg />
     <ReviewsSection />
     <WaveDivider :d="WAVE_B" fill="#FFD2B5" bg flip />
     <LocationSection />

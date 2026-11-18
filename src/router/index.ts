@@ -9,6 +9,8 @@ const router = createRouter({
   ],
   scrollBehavior(to, _from, saved) {
     if (saved) return saved
+    // Halaman katalog lengkap: hash dipakai untuk memilih kategori, bukan untuk menggulir
+    if (to.name === 'catalog') return { top: 0 }
     if (to.hash) return { el: to.hash, behavior: 'smooth', top: 100 }
     return { top: 0 }
   },
