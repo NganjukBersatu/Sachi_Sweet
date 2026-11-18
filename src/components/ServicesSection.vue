@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import { Heart, Plus } from '@lucide/vue'
 import CategoryCard from '@/components/CategoryCard.vue'
-import { catalog, homeCategories, popular, recommended } from '@/data/site'
+import { catalog, homeCategories, popular } from '@/data/site'
+
 
 const restCount = catalog.length - homeCategories.length
 </script>
@@ -52,24 +52,6 @@ const restCount = catalog.length - homeCategories.length
         </div>
       </div>
 
-      <!-- Rekomendasi kami (tidak diubah) -->
-      <div class="mb-7 mt-[60px] flex items-center gap-[18px] before:h-0.5 before:flex-1 before:rounded-sm before:bg-peach-300 after:h-0.5 after:flex-1 after:rounded-sm after:bg-peach-300">
-        <h3 class="flex items-center gap-3 text-[clamp(22px,3vw,28px)]">
-          <Heart class="h-[18px] w-[18px] fill-current text-cherry-600" aria-hidden="true" />Rekomendasi kami<Heart class="h-[18px] w-[18px] fill-current text-cherry-600" aria-hidden="true" />
-        </h3>
-      </div>
-      <div class="grid gap-5 desk:grid-cols-3">
-        <article v-for="r in recommended" :key="r.title" class="flex items-stretch gap-4 rounded-panel border border-peach-300 bg-paper p-3.5">
-          <img :src="r.image" :alt="r.alt" loading="lazy" class="min-h-32 w-28 flex-none rounded-card object-cover" />
-          <div class="flex min-w-0 flex-1 flex-col">
-            <h4 class="text-lg">{{ r.title }}</h4>
-            <p class="mt-1 text-sm text-ink-soft">{{ r.text }}</p>
-            <a href="#pesan" :aria-label="`Pesan ${r.title.toLowerCase()}`" class="mt-auto grid h-11 w-11 self-end place-items-center rounded-soft bg-cherry-700 text-white hover:bg-[#B00000]">
-              <Plus class="h-5 w-5" stroke-width="2.5" aria-hidden="true" />
-            </a>
-          </div>
-        </article>
-      </div>
     </div>
 
     <!-- Tepi bawah bergelombang -->
