@@ -2,7 +2,8 @@
 import { computed, nextTick, onBeforeUnmount, onMounted, ref, watch } from 'vue'
 import { useRoute } from 'vue-router'
 import AppFooter from '@/components/AppFooter.vue'
-import { CONFIG, catalog, images } from '@/data/site'
+import { CONFIG, catalog } from '@/data/site'
+import AppHeader from '@/components/AppHeader.vue'
 
 const route = useRoute()
 const waUrl = `https://wa.me/${CONFIG.whatsapp}?text=${encodeURIComponent('Halo Sachi Sweet, saya ingin pesan dari katalog.')}`
@@ -78,7 +79,7 @@ watch(activeSlug, () => {
 
 // Di mobile: kalau halaman sedang tergulir ke bawah, klik chip membawa pengguna ke awal kategori baru
 const contentEl = ref<HTMLElement | null>(null)
-const STICKY_OFFSET = 128 // tinggi header + baris chip
+const STICKY_OFFSET = 136 // 76 (header) + baris chip
 
 function selectCategory(slug: string) {
   activeSlug.value = slug
@@ -91,33 +92,13 @@ function selectCategory(slug: string) {
 </script>
 
 <template>
-  <header class="sticky top-0 z-50 border-b border-peach-300 bg-paper">
-    <div class="wrap flex h-14 items-center justify-between gap-4 md:h-auto md:py-3">
-      <RouterLink :to="{ name: 'home' }" class="flex items-center gap-3">
-        <img
-          :src="images.logo"
-          alt="Logo Sachi Sweet"
-          class="h-10 w-10 rounded-full border-2 border-peach-300 object-cover md:h-12 md:w-12"
-        />
-        <span class="leading-tight">
-          <span class="block text-base font-semibold md:text-lg">Sachi Sweet</span>
-          <span class="hidden text-sm text-ink-soft sm:block">Café dan dessert</span>
-        </span>
-      </RouterLink>
-      <RouterLink
-        :to="{ name: 'home', hash: '#katalog' }"
-        class="inline-flex min-h-[44px] items-center font-semibold text-[#5a0d0d] no-underline hover:underline"
-      >
-        Kembali
-      </RouterLink>
-    </div>
-  </header>
-
+ <AppHeader />
+  
   <main class="pb-[72px] md:pt-10">
     <h1 class="sr-only">Katalog lengkap</h1>
 
     <!-- Pilihan kategori: di mobile satu baris yang bisa digeser dan menempel di bawah header -->
-    <div class="sticky top-[57px] z-40 border-b border-peach-300/60 bg-cream md:static md:mb-10 md:border-0 md:bg-transparent">
+    <div class="sticky top-[76px] z-40 border-b border-peach-300/60 bg-cream md:static md:mb-10 md:border-0 md:bg-transparent">
       <div
         role="group"
         aria-label="Pilih kategori"
@@ -140,7 +121,7 @@ function selectCategory(slug: string) {
 
     <div class="wrap pt-6 md:pt-0">
       <!-- Isi kategori -->
-      <div ref="contentEl" class="scroll-mt-[128px] md:scroll-mt-0">
+      <div ref="contentEl" class="scroll-mt-[136px] md:scroll-mt-0">
         <Transition name="swap" mode="out-in">
           <div
             v-if="active"

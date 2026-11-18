@@ -54,7 +54,7 @@ export const images = { logo, hero, tentangkami }
 export const navLinks: NavLink[] = [
   { id: 'beranda', label: 'Beranda' },
   { id: 'tentang', label: 'Tentang kami' },
-  { id: 'katalog', label: 'Katalog' },
+  { id: 'katalog', label: 'Katalog', to: '/katalog' },
   { id: 'ulasan', label: 'Ulasan' },
   { id: 'lokasi', label: 'Lokasi' },
 ]
