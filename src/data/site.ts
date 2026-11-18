@@ -10,6 +10,21 @@ import milkbun from '@/assets/milkbun.jpg'
 import chocoberry from '@/assets/chocoberry.jpg'
 import minicakeRek from '@/assets/minicake.jpg'
 import locationPhoto from '@/assets/mockup.jpeg'
+import natal from '@/assets/katalog/natal.jpeg'
+import salt from '@/assets/katalog/salt.jpeg'
+import donat from '@/assets/katalog/donat.jpeg'
+import matcha from '@/assets/katalog/matcha.jpeg'
+import bentocake from '@/assets/katalog/bentocake.jpeg'
+import dineIn from '@/assets/katalog/dine-in.jpeg'
+import rotiSobek from '@/assets/katalog/roti-sobek.jpeg'
+import dubai from '@/assets/katalog/dubai.jpeg'
+import macaron from '@/assets/katalog/macaron.jpeg'
+import spesial from '@/assets/katalog/spesial.jpeg'
+import wedding from '@/assets/katalog/wedding.jpeg'
+import custom from '@/assets/katalog/custom.jpeg'
+import cupcake from '@/assets/katalog/cupcake.jpg'
+import sweet from '@/assets/katalog/sweet&savory.jpg'
+
 
 /* ===== PENGATURAN: ubah bagian ini saja ===== */
 export const CONFIG: Record<'whatsapp' | 'phoneLabel' | 'address' | Platform, string> = {
@@ -146,6 +161,28 @@ export interface CatalogCategory {
 }
 
 export const catalog: CatalogCategory[] = [
+  category('Xmas Hampers', [['Hampers Mini', 85000], ['Hampers Reguler', 150000], ['Hampers Premium', 250000], ['Hampers Keluarga', 350000]], natal),
+  category('Salt Bread', [['Original', 12000], ['Cheese', 15000], ['Choco', 15000], ['Smoked Beef', 18000]], salt),
+  category('Cup Cake', [['Vanilla', 15000], ['Chocolate', 15000], ['Strawberry', 18000], ['Red Velvet', 18000]], cupcake), // foto belum dipilih
+  category('Donuts', [['Glazed', 8000], ['Choco', 10000], ['Matcha', 12000], ['Box isi 6', 55000]], donat),
+  category('Chocoberry Callebaut', [['Chocoberry Cup', 28000], ['Cake Slice', 32000], ['Cookies', 20000], ['Gift Box', 95000]], chocoberry),
+  category('Matcha Series', [['Matcha Latte', 25000], ['Cake Slice', 30000], ['Cookies', 20000], ['Matcha Roll', 35000]], matcha),
+  category('Bento Cake', [['Bento Polos', 45000], ['Bento Tulisan', 55000], ['Bento Hias', 65000], ['Bento Set Hadiah', 85000]], bentocake),
+  category('Dine In', [['Kopi Susu', 22000], ['Matcha Latte', 25000], ['Spaghetti Carbonara', 38000], ['Tiramisu', 30000]], dineIn),
+  category('Roti Sobek', [['Original', 28000], ['Cokelat', 32000], ['Keju', 35000], ['Mix', 38000]], rotiSobek),
+  category('Sweet & Savory', [['Milkbun', 20000], ['Croissant', 25000], ['Churros', 25000], ['Pizza Mini', 30000]], sweet), // foto belum dipilih
+  category('Dubai Series', [['Dubai Chewy Cookie', 25000], ['Dubai Brownies', 35000], ['Dubai Cup', 38000], ['Dubai Cake Slice', 45000]], dubai),
+  category('Whole Cake', [['Chocolate 20 cm', 180000], ['Red Velvet 20 cm', 200000], ['Tiramisu 20 cm', 220000], ['Cheesecake 20 cm', 230000]], wholecake),
+  category('Fatcaron', [['Original', 15000], ['Choco', 17000], ['Strawberry', 17000], ['Box isi 6', 90000]], macaron),
+  category('Special Edition', [['Edisi Natal', 45000], ['Edisi Valentine', 45000], ['Edisi Lebaran', 50000], ['Edisi Ulang Tahun', 55000]], spesial),
+  category('Wedding Cakes', [['2 Tier', 750000], ['3 Tier', 1200000], ['Cupcake Tower', 900000], ['Dessert Table', 1500000]], wedding),
+  category('Custom Cake', [['Custom 15 cm', 250000], ['Custom 20 cm', 350000], ['Custom 2 Layer', 450000], ['Custom Karakter', 500000]], custom),
+]
+
+
+/* Kategori yang tampil di beranda: ubah urutan di atas atau angka 2 ini */
+const homeTitles = ['Salt Bread', 'Chocoberry Callebaut', 'Whole Cake', 'Dubai Series']
+export const homeCategories = catalog.filter((c) => homeTitles.includes(c.title))
   {
     slug: 'roti',
     title: 'Roti',
