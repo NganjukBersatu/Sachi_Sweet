@@ -39,7 +39,6 @@ const restCount = catalog.length - homeCategories.length
         <div>
           <h3 class="mb-2.5 text-[clamp(26px,3vw,34px)]">Menu populer</h3>
           <p class="mb-5 max-w-[30ch]">Sajian favorit pelanggan, dari camilan box sampai kue manis.</p>
-          <a href="#pesan" class="btn btn-soft">Pesan sekarang</a>
         </div>
         <div class="grid gap-7 text-center sm:grid-cols-3 sm:gap-6">
           <div v-for="p in popular" :key="p.title">

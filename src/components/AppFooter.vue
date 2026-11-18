@@ -14,7 +14,7 @@ const contact = {
 </script>
 
 <template>
-  <footer class="site-footer relative mt-24 bg-[#FFC9A8] text-[#4a0a00]">
+ <footer id="footer" class="site-footer relative mt-24 bg-[#FFC9A8] text-[#4a0a00]">
     <div class="wrap grid gap-10 pb-8 pt-12 md:grid-cols-[1.4fr_1fr_1.2fr] md:gap-16">
       <!-- Brand -->
       <div>
