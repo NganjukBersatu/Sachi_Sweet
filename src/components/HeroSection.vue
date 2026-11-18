@@ -7,13 +7,13 @@ const waUrl = `https://wa.me/${CONFIG.whatsapp}?text=${encodeURIComponent('Halo 
 
 <template>
   <header
-    id="beranda"
-    class="relative flex min-h-[700px] flex-col justify-end overflow-hidden pb-6 pt-24 desk:block desk:min-h-[640px] desk:justify-start desk:pb-[72px] desk:pt-9"
-  >
+  id="beranda"
+  class="relative flex min-h-[700px] flex-col justify-end overflow-hidden pb-6 pt-24 desk:block desk:min-h-[640px] desk:justify-start desk:pb-[72px] desk:pt-9 2xl:min-h-[760px]"
+>
     <!-- Foto -->
     <div
-      class="absolute inset-0 z-0 animate-rise overflow-hidden motion-reduce:animate-none desk:-right-[10%] desk:-top-[25%] desk:bottom-6 desk:left-auto desk:inset-y-auto desk:w-[66%] desk:rounded-[38%_0_0_62%/42%_0_0_58%] desk:shadow-soft"
-    >
+  class="absolute inset-0 z-0 animate-rise overflow-hidden motion-reduce:animate-none desk:inset-y-auto desk:-top-[25%] desk:bottom-6 desk:left-1/2 desk:right-0 desk:rounded-[38%_0_0_62%/42%_0_0_58%] desk:shadow-soft"
+>
       <img
         :src="images.hero"
         alt="Tampak depan Sachi Sweet Café dengan lampu gantung dan tanaman di teras"

@@ -34,7 +34,7 @@
 
 @layer base {
   html { @apply scroll-smooth motion-reduce:scroll-auto; scroll-padding-top: 84px; }
-  body { @apply m-0 bg-cream font-body text-base leading-relaxed text-ink; }
+  body { @apply m-0 bg-cream font-body text-base leading-relaxed text-ink; overflow-x: clip; }
   h1, h2, h3, h4 { @apply m-0 font-head font-extrabold leading-[1.15] text-cherry-900; }
   p { @apply m-0; }
   img { @apply block max-w-full; }
@@ -43,7 +43,7 @@
 }
 
 @layer components {
-  .wrap { @apply mx-auto w-[min(1160px,calc(100%-40px))]; }
+  .wrap { @apply mx-auto w-[calc(100%-40px)] desk:w-[calc(100%-96px)]; }
   .btn { @apply inline-flex min-h-[44px] cursor-pointer items-center justify-center gap-2 rounded-full border-2 border-transparent px-6 font-head text-base font-bold leading-none no-underline transition-colors motion-reduce:transition-none; }
   .btn-primary { @apply bg-cherry-700 text-white hover:bg-[#B00000] active:scale-[.98]; }
   .btn-ghost { @apply border-cherry-700 bg-transparent text-cherry-900 hover:bg-peach-300; }
@@ -53,3 +53,15 @@
   .sec-title { @apply text-[clamp(28px,4vw,40px)]; }
   .field-input { @apply min-h-[48px] w-full rounded-soft border-[1.5px] border-peach-500 bg-white px-3.5 py-3 text-base leading-snug text-ink; }
 }
+
+/* ------------------------------------------------------------------
+   Skala otomatis untuk layar lebar.
+   Desain desktop dirancang untuk lebar sekitar 1280px. Di layar yang
+   lebih lebar, seluruh halaman dibesarkan proporsional supaya tidak
+   terlihat kecil di tengah. Layar di bawah 1600px tidak berubah.
+------------------------------------------------------------------- */
+@media (min-width: 1600px) { html { zoom: 1.25; } }
+@media (min-width: 1920px) { html { zoom: 1.5; } }
+@media (min-width: 2560px) { html { zoom: 2; } }
+@media (min-width: 3200px) { html { zoom: 2.5; } }
+@media (min-width: 4000px) { html { zoom: 3; } }
