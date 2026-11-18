@@ -53,7 +53,7 @@ onBeforeUnmount(() => {
       </ul>
 
       <div class="flex items-center gap-2">
-        <a href="#kontak" class="btn btn-ghost hidden desk:inline-flex">Hubungi kami</a>
+        <a href="#footer" class="btn btn-ghost hidden desk:inline-flex">Hubungi kami</a>
         <button
           type="button"
           class="inline-flex h-11 w-11 cursor-pointer items-center justify-center rounded-full border border-peach-500 bg-white text-cherry-900 desk:hidden"

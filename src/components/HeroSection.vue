@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import { ShoppingCart, Clock } from '@lucide/vue'
-import { heroChips, images } from '@/data/site'
+import { CONFIG, heroChips, images } from '@/data/site'
+
+const waUrl = `https://wa.me/${CONFIG.whatsapp}?text=${encodeURIComponent('Halo Sachi Sweet, saya ingin memesan.')}`
 </script>
 
 <template>
@@ -43,17 +45,19 @@ import { heroChips, images } from '@/data/site'
 
         <div class="flex animate-rise flex-wrap items-center gap-2.5 [animation-delay:.16s] motion-reduce:animate-none desk:gap-3.5">
   <a
-    href="#kontak"
-    class="inline-flex w-auto max-w-full shrink-0 items-center justify-center gap-2 whitespace-nowrap rounded-full bg-cherry-700 px-6 py-3.5 text-base font-bold text-white shadow-soft hover:bg-[#B00000] desk:px-8 desk:py-4 desk:text-lg"
-  >
-    <ShoppingCart class="h-[18px] w-[18px] shrink-0" aria-hidden="true" />
-    Pesan sekarang
-  </a>
+  :href="waUrl"
+  target="_blank"
+  rel="noopener"
+  class="inline-flex w-auto max-w-full shrink-0 items-center justify-center gap-2 whitespace-nowrap rounded-full bg-cherry-700 px-6 py-3.5 text-base font-bold text-white shadow-soft hover:bg-[#B00000] desk:px-8 desk:py-4 desk:text-lg"
+>
+  <ShoppingCart class="h-[18px] w-[18px] shrink-0" aria-hidden="true" />
+  Pesan sekarang
+</a>
   <a
     href="#katalog"
     class="inline-flex w-auto shrink-0 items-center justify-center whitespace-nowrap rounded-full border-2 border-cherry-700 bg-white/50 px-5 py-3 text-base font-bold text-cherry-900 desk:bg-transparent"
   >
-    Lihat menu
+    Lihat Katalog
   </a>
 </div>
 
