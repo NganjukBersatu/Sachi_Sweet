@@ -31,7 +31,6 @@ import { features, images } from '@/data/site'
           <p class="mx-auto mb-3 max-w-[54ch] text-base leading-relaxed sm:mx-0 sm:mb-3.5 sm:text-[17px]">
             Dari milk bun dan croissant sampai tiramisu dan cupcake stroberi, setiap sajian kami siapkan supaya Anda ingin kembali lagi.
           </p>
-          <a href="#layanan" class="btn btn-primary mt-3 w-full justify-center sm:mt-2.5 sm:w-auto">Lihat layanan kami</a>
         </div>
       </div>
 
