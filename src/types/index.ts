@@ -8,3 +8,9 @@ export interface MenuItem { title: string; text: string; image: string; alt: str
 export interface Review { image: string; alt: string }
 export interface Job { title: string; text: string; tags: string[] }
 export interface PlatformLink { key: Platform; label: string; href: string }
+
+export interface SocialLink {
+  icon: 'instagram' | 'whatsapp' | 'tiktok'
+  label: string
+  url: string
+}

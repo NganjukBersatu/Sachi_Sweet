@@ -160,71 +160,170 @@ export interface CatalogCategory {
   items: CatalogItem[]
 }
 
+const rp = (n: number) => `Rp ${n.toLocaleString('id-ID')}`
+
+/* image bisa diganti per kategori lewat argumen ketiga; kalau kosong dipakai logo */
+const category = (title: string, items: [string, number][], image: string = logo): CatalogCategory => ({
+  slug: title.toLowerCase().replace(/&/g, 'dan').replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, ''),
+  title,
+  image,
+  items: items.map(([name, price]) => ({ name, price: rp(price) })),
+})
+
+/* DATA CONTOH: ganti nama menu dan harga dengan yang asli */
 export const catalog: CatalogCategory[] = [
-  category('Xmas Hampers', [['Hampers Mini', 85000], ['Hampers Reguler', 150000], ['Hampers Premium', 250000], ['Hampers Keluarga', 350000]], natal),
-  category('Salt Bread', [['Original', 12000], ['Cheese', 15000], ['Choco', 15000], ['Smoked Beef', 18000]], salt),
-  category('Cup Cake', [['Vanilla', 15000], ['Chocolate', 15000], ['Strawberry', 18000], ['Red Velvet', 18000]], cupcake), // foto belum dipilih
-  category('Donuts', [['Glazed', 8000], ['Choco', 10000], ['Matcha', 12000], ['Box isi 6', 55000]], donat),
-  category('Chocoberry Callebaut', [['Chocoberry Cup', 28000], ['Cake Slice', 32000], ['Cookies', 20000], ['Gift Box', 95000]], chocoberry),
-  category('Matcha Series', [['Matcha Latte', 25000], ['Cake Slice', 30000], ['Cookies', 20000], ['Matcha Roll', 35000]], matcha),
-  category('Bento Cake', [['Bento Polos', 45000], ['Bento Tulisan', 55000], ['Bento Hias', 65000], ['Bento Set Hadiah', 85000]], bentocake),
-  category('Dine In', [['Kopi Susu', 22000], ['Matcha Latte', 25000], ['Spaghetti Carbonara', 38000], ['Tiramisu', 30000]], dineIn),
-  category('Roti Sobek', [['Original', 28000], ['Cokelat', 32000], ['Keju', 35000], ['Mix', 38000]], rotiSobek),
-  category('Sweet & Savory', [['Milkbun', 20000], ['Croissant', 25000], ['Churros', 25000], ['Pizza Mini', 30000]], sweet), // foto belum dipilih
-  category('Dubai Series', [['Dubai Chewy Cookie', 25000], ['Dubai Brownies', 35000], ['Dubai Cup', 38000], ['Dubai Cake Slice', 45000]], dubai),
-  category('Whole Cake', [['Chocolate 20 cm', 180000], ['Red Velvet 20 cm', 200000], ['Tiramisu 20 cm', 220000], ['Cheesecake 20 cm', 230000]], wholecake),
-  category('Fatcaron', [['Original', 15000], ['Choco', 17000], ['Strawberry', 17000], ['Box isi 6', 90000]], macaron),
-  category('Special Edition', [['Edisi Natal', 45000], ['Edisi Valentine', 45000], ['Edisi Lebaran', 50000], ['Edisi Ulang Tahun', 55000]], spesial),
-  category('Wedding Cakes', [['2 Tier', 750000], ['3 Tier', 1200000], ['Cupcake Tower', 900000], ['Dessert Table', 1500000]], wedding),
-  category('Custom Cake', [['Custom 15 cm', 250000], ['Custom 20 cm', 350000], ['Custom 2 Layer', 450000], ['Custom Karakter', 500000]], custom),
+  category('Xmas Hampers', [
+    ['Korean Cake Ribbon Choco Cheese 14 cm', 350000],
+    ['Cup Cake isi 6 (Base Chocolate Crunchy)', 230000],
+    ['Cakebox Tiramisu', 200000],
+    ['Cakebox Chocomint', 200000],
+    ['Christmas Tree Tarts Vanilla Cheese 14 cm', 375000],
+    ['Japanese Roll Cake Red Velvet Cheese 8 cm', 180000],
+    ['Donuts Brulle', 96000],
+    ['Donuts Ritz Meses', 85000],
+    ['Croissant Bread Pudding', 185000],
+    ['Macaroni Schotel', 185000],
+    ['Dimsum Bolognese', 140000],
+    ['Klapertart', 145000],
+    ['Chiffon Chocomint', 85000],
+    ['Chiffon Ubechoco', 85000],
+    ['Roti Sobek Chocolate', 55000],
+    ['Roti Sobek Tiramisu', 55000],
+  ], natal),
+  category('Salt Bread', [
+    ['Nuttela', 28000],
+    ['Original Butter', 20000],
+    ['Cheese Mayo', 29000],
+    ['Dubai Pistachio', 35000],
+    ['Cheese Crunchy', 30000],
+  ], salt),
+  category('Cup Cake', [
+    ['Cup Cake Bouquet Flowers', 190000],
+    ['Birthday Gift Cup Cake', 20000],
+  ], cupcake),
+  category('Donuts', [
+    ['Premium Donuts', 85000],
+    ['Donuts Brulle', 80000],
+    ['Ritz', 70000],
+    ['Sweet Donuts', 65000],
+  ], donat),
+  category('Chocoberry Callebaut', [
+    ['Strawberry with Callebaut', 65000],
+    ['Muscat x Strawberry with Callebaut', 75000],
+    ['Strawberry Dubai Chewy with Callebaut', 95000],
+  ], chocoberry),
+  category('Matcha Series', [
+    ['Coconut Matcha', 35000],
+    ['Bumble Matcha', 40000],
+    ['Strawberry Matcha Latte', 42000],
+    ['Matcha Latte Marshmallow', 40000],
+    ['Brownies Matcha Ice Cream', 35000],
+    ['Poured Matcha', 55000],
+    ['Croissant Matcha Strawberry', 30000],
+    ['Matcha Fatcaron', 25000],
+    ['Ceremonial Hojicha Latte', 55000],
+    ['Ceremonial Matcha Latte', 55000],
+  ], matcha),
+  category('Bento Cake', [
+    ['Bento Cake 10 cm', 99000],
+  ], bentocake),
+  category('Dine In', [
+    ['Croissant (mulai dari)', 20000],
+    ['Cromboloni', 22000],
+    ['Pisang Bolen', 10000],
+    ['Dessert (mulai dari)', 17000],
+    ['Ice Cream', 28000],
+    ['Mini Cake', 35000],
+    ['Pasta (mulai dari)', 36000],
+    ['Main Course (mulai dari)', 30000],
+    ['Burger (mulai dari)', 39000],
+    ['Brunch (mulai dari)', 20000],
+    ['Snack (mulai dari)', 18000],
+    ['Milk Bun', 25000],
+    ['Fatcaron', 25000],
+    ['Hot Drink', 16000],
+    ['Juice (mulai dari)', 16000],
+    ['Mocktail (mulai dari)', 28000],
+    ['Chocolate (mulai dari)', 23000],
+    ['Coffee (mulai dari)', 25000],
+  ], dineIn),
+  category('Roti Sobek', [
+    ['Sobek Srikaya', 28000],
+    ['Sobek 6 Rasa', 27000],
+    ['Sobek Choco Cheese', 26000],
+    ['Sobek Tiramisu', 28000],
+    ['Sobek Vanilla', 28000],
+    ['Sobek Keju', 28000],
+    ['Sobek Martabak', 28000],
+    ['Sobek Pandan', 28000],
+    ['Sobek Chocolate', 26000],
+    ['Konde Choco', 27000],
+    ['Sobek Topping Keju', 30000],
+    ['Sobek Abon', 28000],
+  ], rotiSobek),
+  category('Sweet & Savory', [
+    ['Spaghetti Brulle 900 ml', 165000],
+    ['Klapertart 900 ml', 120000],
+    ['Macaroni Schotel 900 ml', 165000],
+    ['Japanese Roll Cake 18 cm', 145000],
+    ['Bolu Ketan (mulai dari)', 55000],
+    ['Milk Bun (mulai dari)', 45000],
+    ['Chiffon 20 cm', 80000],
+    ['Brownies Shiny Crust 18 cm', 130000],
+    ['Pisang Bolen isi 8', 60000],
+    ['Cake Box (mulai dari)', 75000],
+    ['Tom & Jerry Cheese', 35000],
+  ], sweet),
+  category('Dubai Series', [
+    ['Dubai Mousse Cake', 55000],
+    ['Fatcaron Black Dubai Pistachio', 35000],
+    ['Dubai Chewy Cookie', 43000],
+    ['Tower Dubai Chewy Cookie', 300000],
+  ], dubai),
+  category('Whole Cake', [
+    ['Premium Fruit Cake (mulai dari)', 260000],
+    ['Premium Chocolate Series (mulai dari)', 265000],
+    ['Premium Classic (mulai dari)', 245000],
+    ['Premium Cheese Cake (mulai dari)', 265000],
+    ['Premium Celebration Cake (mulai dari)', 295000],
+    ['Premium Towers (mulai dari)', 150000],
+    ['Premium Tart (mulai dari)', 265000],
+    ['Premium Daily Cake (mulai dari)', 180000],
+  ], wholecake),
+  category('Fatcaron', [
+    ['Fatcaron', 25000],
+    ['Fatcaron Towers (mulai dari)', 260000],
+  ], macaron),
+  category('Special Edition', [
+    ['Rose', 195000],
+    ['Frame', 170000],
+    ['Flower Plants', 190000],
+  ], spesial),
+  category('Wedding Cakes', [
+    ['Italian Cake (mulai dari)', 450000],
+    ['Line Cakes', 3000000],
+  ], wedding),
+  category('Custom Cake', [
+    ['Bouquet Flowers (mulai dari)', 370000],
+    ['Butterfly (mulai dari)', 295000],
+    ['Ribbon Cake (mulai dari)', 295000],
+    ['Rock Cake (mulai dari)', 295000],
+    ['Vintage (mulai dari)', 300000],
+    ['Nami Birthday (mulai dari)', 265000],
+    ['Flowers Cake (mulai dari)', 370000],
+    ['3D Cake (mulai dari)', 395000],
+    ['Painting (mulai dari)', 300000],
+    ['Cartoon (mulai dari)', 350000],
+    ['Edible Print (mulai dari)', 425000],
+    ['Comic Cake (mulai dari)', 335000],
+    ['Heart (mulai dari)', 315000],
+    ['3D Fondant (mulai dari)', 400000],
+    ['Simple Design (mulai dari)', 375000],
+    ['Tiers (mulai dari)', 650000],
+    ['Burn Away Cake (mulai dari)', 135000],
+  ], custom),
 ]
 
-
-/* Kategori yang tampil di beranda: ubah urutan di atas atau angka 2 ini */
+/* Kategori yang tampil di beranda: ganti judul di bawah ini; urutan kartu mengikuti urutan di catalog */
 const homeTitles = ['Salt Bread', 'Chocoberry Callebaut', 'Whole Cake', 'Dubai Series']
 export const homeCategories = catalog.filter((c) => homeTitles.includes(c.title))
-  {
-    slug: 'roti',
-    title: 'Roti',
-    image: milkbun,
-    items: [
-      { name: 'Milk Bun', price: 'Rp 0' }, // isi harga asli
-      { name: 'Roti Sobek', price: 'Rp 0' },
-    ],
-  },
-  {
-    slug: 'kue-tart',
-    title: 'Kue tart',
-    image: wholecake,
-    items: [{ name: 'Whole Cake', price: 'Rp 0' }],
-  },
-  {
-    slug: 'mini-cake',
-    title: 'Mini cake',
-    image: minicakeRek,
-    items: [{ name: 'Mini Cake', price: 'Rp 0' }],
-  },
-  {
-    slug: 'dessert',
-    title: 'Dessert',
-    image: tiramisu,
-    items: [
-      { name: 'Poured Tiramisu', price: 'Rp 0' },
-      { name: 'Strawberry Cheesecake', price: 'Rp 0' },
-    ],
-  },
-  {
-    slug: 'cake-bar',
-    title: 'Cake bar',
-    image: chocoberry,
-    items: [{ name: 'Choco Berry', price: 'Rp 0' }],
-  },
-  {
-    slug: 'hampers',
-    title: 'Hampers',
-    image: cheesecake,
-    items: [{ name: 'Hampers Acara', price: 'Rp 0' }],
-  },
-]
-
-export const homeCategories = catalog.slice(0, 5)
