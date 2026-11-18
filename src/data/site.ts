@@ -55,10 +55,8 @@ export const navLinks: NavLink[] = [
   { id: 'beranda', label: 'Beranda' },
   { id: 'tentang', label: 'Tentang kami' },
   { id: 'katalog', label: 'Katalog' },
-  { id: 'portofolio', label: 'Portofolio' },
+  { id: 'ulasan', label: 'Ulasan' },
   { id: 'lokasi', label: 'Lokasi' },
-  { id: 'karier', label: 'Karier' },
-  { id: 'kontak', label: 'Kontak' },
 ]
 
 export const heroChips = [
@@ -71,7 +69,7 @@ export const features: Feature[] = [
   { title: 'Dibuat segar', text: 'Dessert dan roti disiapkan segar, dari kue kecil sampai kue tart.', icon: Coffee },
   { title: 'Suasana rumahan', text: 'Tempat duduk santai di teras dan ruangan yang sejuk.', icon: Home },
   { title: 'Pesanan acara', text: 'Kue ulang tahun dan hidangan untuk perayaan Anda.', icon: Gift },
-  { title: 'Pesan antar mudah', text: 'Tersedia di GoFood, GrabFood, dan ShopeeFood.', icon: Truck },
+  { title: 'Pesan dengan mudah', text: 'Hubungi kami untuk memesan dessert favorit Anda.', icon: Truck },
 ]
 
 export const services: Feature[] = [
@@ -150,20 +148,18 @@ export const locationFacts = [
   { label: 'Kisaran harga', text: 'Rp 25–50 rb per orang', icon: Wallet },
 ]
 
-export type CatalogItem = { name: string; price: string }
-export type CatalogCategory = { slug: string; title: string; image: string; items: CatalogItem[] }
+export interface CatalogItem {
+  name: string
+  price: string // sudah diformat, mis. 'Rp 15.000'
+}
 
-const rp = (n: number) => `Rp ${n.toLocaleString('id-ID')}`
+export interface CatalogCategory {
+  slug: string
+  title: string
+  image: string
+  items: CatalogItem[]
+}
 
-/* image bisa diganti per kategori, mis. import xmas from '@/assets/katalog/xmas.jpeg' lalu kirim sebagai argumen ke-3 */
-const category = (title: string, items: [string, number][], image: string = logo): CatalogCategory => ({
-  slug: title.toLowerCase().replace(/&/g, 'dan').replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, ''),
-  title,
-  image,
-  items: items.map(([name, price]) => ({ name, price: rp(price) })),
-})
-
-/* DATA CONTOH: ganti nama menu dan harga dengan yang asli */
 export const catalog: CatalogCategory[] = [
   category('Xmas Hampers', [['Hampers Mini', 85000], ['Hampers Reguler', 150000], ['Hampers Premium', 250000], ['Hampers Keluarga', 350000]], natal),
   category('Salt Bread', [['Original', 12000], ['Cheese', 15000], ['Choco', 15000], ['Smoked Beef', 18000]], salt),
@@ -187,3 +183,48 @@ export const catalog: CatalogCategory[] = [
 /* Kategori yang tampil di beranda: ubah urutan di atas atau angka 2 ini */
 const homeTitles = ['Salt Bread', 'Chocoberry Callebaut', 'Whole Cake', 'Dubai Series']
 export const homeCategories = catalog.filter((c) => homeTitles.includes(c.title))
+  {
+    slug: 'roti',
+    title: 'Roti',
+    image: milkbun,
+    items: [
+      { name: 'Milk Bun', price: 'Rp 0' }, // isi harga asli
+      { name: 'Roti Sobek', price: 'Rp 0' },
+    ],
+  },
+  {
+    slug: 'kue-tart',
+    title: 'Kue tart',
+    image: wholecake,
+    items: [{ name: 'Whole Cake', price: 'Rp 0' }],
+  },
+  {
+    slug: 'mini-cake',
+    title: 'Mini cake',
+    image: minicakeRek,
+    items: [{ name: 'Mini Cake', price: 'Rp 0' }],
+  },
+  {
+    slug: 'dessert',
+    title: 'Dessert',
+    image: tiramisu,
+    items: [
+      { name: 'Poured Tiramisu', price: 'Rp 0' },
+      { name: 'Strawberry Cheesecake', price: 'Rp 0' },
+    ],
+  },
+  {
+    slug: 'cake-bar',
+    title: 'Cake bar',
+    image: chocoberry,
+    items: [{ name: 'Choco Berry', price: 'Rp 0' }],
+  },
+  {
+    slug: 'hampers',
+    title: 'Hampers',
+    image: cheesecake,
+    items: [{ name: 'Hampers Acara', price: 'Rp 0' }],
+  },
+]
+
+export const homeCategories = catalog.slice(0, 5)

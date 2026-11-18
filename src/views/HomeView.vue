@@ -5,7 +5,6 @@ import AboutSection from '@/components/AboutSection.vue'
 import ServicesSection from '@/components/ServicesSection.vue'
 import ReviewsSection from '@/components/ReviewsSection.vue'
 import LocationSection from '@/components/LocationSection.vue'
-import ContactSection from '@/components/ContactSection.vue'
 import AppFooter from '@/components/AppFooter.vue'
 import WaveDivider from '@/components/WaveDivider.vue'
 
