@@ -144,7 +144,15 @@ export const hours: OpenHours[] = [
 export const locationFacts = [
   { label: 'Teras santai', text: 'Duduk santai di teras', icon: Home },
   { label: 'Ber-AC', text: 'Ruangan sejuk dan nyaman', icon: Wind },
-  { label: 'Pesan antar', text: 'GoFood, GrabFood, ShopeeFood', icon: Truck },
+  {
+  label: 'Pesan antar',
+  text: 'GoFood, ShopeeFood',            // tetap ada sebagai cadangan
+  icon: Truck,                           // pakai ikon yang sudah ada di item ini
+  links: [
+    { name: 'GoFood', url: 'https://gofood.co.id/semarang/restaurant/sachi-sweet-cafe-perum-bumi-wanamukti-blok-b2-b9467c4e-62d7-4b31-aea4-6fa22e9a6fc9' },
+    { name: 'ShopeeFood', url: 'https://shopee.co.id/universal-link/now-food/shop/21542566?deep_and_deferred=1&shareChannel=copy_link' },
+  ],
+},
   { label: 'Kisaran harga', text: 'Rp 25–50 rb per orang', icon: Wallet },
 ]
 
