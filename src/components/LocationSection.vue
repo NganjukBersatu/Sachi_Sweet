@@ -195,9 +195,26 @@ const status = computed(() => {
           <span class="grid h-11 w-11 shrink-0 place-items-center rounded-full bg-peach-200 text-[#5a0d0d] sm:h-12 sm:w-12">
             <component :is="f.icon" class="h-5 w-5" aria-hidden="true" />
           </span>
+
           <span class="min-w-0">
             <span class="block text-[15px] font-semibold leading-tight sm:text-base">{{ f.label }}</span>
-            <span class="mt-0.5 block text-[13px] leading-snug text-ink-soft sm:text-sm">{{ f.text }}</span>
+
+            <!-- Kalau item punya links: nama platform jadi link yang bisa ditekan -->
+            <span v-if="f.links" class="mt-0.5 flex flex-wrap gap-x-3 gap-y-1 text-[13px] leading-snug sm:text-sm">
+              <a
+                v-for="l in f.links"
+                :key="l.name"
+                :href="l.url"
+                target="_blank"
+                rel="noopener"
+                class="font-semibold text-[#5a0d0d] underline underline-offset-2 hover:opacity-80"
+              >
+                {{ l.name }}
+              </a>
+            </span>
+
+            <!-- Item lain tetap teks biasa -->
+            <span v-else class="mt-0.5 block text-[13px] leading-snug text-ink-soft sm:text-sm">{{ f.text }}</span>
           </span>
         </li>
       </ul>
